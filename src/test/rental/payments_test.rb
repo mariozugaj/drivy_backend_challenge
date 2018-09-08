@@ -27,12 +27,12 @@ class RentalPaymentsTest < Minitest::Test
       {
         "who": :driver,
         "type": :debit,
-        "amount": 3000
+        "amount": 3700
       },
       {
         "who": :owner,
         "type": :credit,
-        "amount": 2100
+        "amount": 2800
       },
       {
         "who": :insurance,

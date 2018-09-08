@@ -31,6 +31,15 @@ class Rental
       def payment_from_commission
         rental.commission.send("#{actor}_fee")
       end
+
+      def payment_from_options
+        rental_options = rental.options.select { |option| option.payment_to == actor }
+        if rental_options.empty?
+          return 0
+        else
+          rental_options.map(&:price).reduce(:+)
+        end
+      end
     end
   end
 end

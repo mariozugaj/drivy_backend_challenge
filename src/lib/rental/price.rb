@@ -18,11 +18,24 @@ class Rental
                                                     rental.metadata.distance)
     end
 
+    def for_options
+      @for_options ||= Rental::Price::Options.new(rental.options,
+                                                  rental.duration)
+    end
+
     def total
       all_components.map(&:total).reduce(:+)
     end
 
+    def commisionable_total
+      commissionable_components.map(&:total).reduce(:+)
+    end
+
     def all_components
+      [for_duration, for_distance, for_options]
+    end
+
+    def commissionable_components
       [for_duration, for_distance]
     end
   end

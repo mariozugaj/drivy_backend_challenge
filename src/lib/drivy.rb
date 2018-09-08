@@ -18,4 +18,8 @@ class Drivy
   def rentals
     data[:rentals].map { |rental| Rental.new(rental) }
   end
+
+  def options
+    data[:options].map { |option| Rental::Option.new(option) }
+  end
 end

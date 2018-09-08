@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FileActions
-  INPUT_FILE = '../levels/level4/data/input.json'
+  INPUT_FILE = '../levels/level5/data/input.json'
   OUTPUT_FILE = 'data/output.json'
 
   class << self

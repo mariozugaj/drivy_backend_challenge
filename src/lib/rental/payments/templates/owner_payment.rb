@@ -13,7 +13,7 @@ class Rental
       end
 
       def payment_total
-        rental.total_price - rental.commission.amount
+        rental.commission_price - rental.commission.amount + payment_from_options
       end
     end
   end

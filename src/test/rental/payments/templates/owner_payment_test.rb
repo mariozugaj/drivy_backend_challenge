@@ -18,14 +18,14 @@ class RentalPaymentsOwnerPaymentTest < Minitest::Test
   end
 
   def test_payment_total
-    assert_equal 2_100, @owner_payment.payment_total
+    assert_equal 2_800, @owner_payment.payment_total
   end
 
   def test_json_output_template
     output = {
       who: :owner,
       type: :credit,
-      amount: 2_100
+      amount: 2_800
     }
     assert_equal output, @owner_payment.to_json
   end

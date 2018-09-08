@@ -22,24 +22,38 @@ class RentalTest < Minitest::Test
   end
 
   def test_total_price
-    assert_equal 3_000, @rental_one.total_price
-    assert_equal 6_800, @rental_two.total_price
+    assert_equal 3_700, @rental_one.total_price
+    assert_equal 8_800, @rental_two.total_price
     assert_equal 27_800, @rental_three.total_price
+  end
+
+  def test_commission_price
+    assert_equal 3_000, @rental_one.commission_price
+    assert_equal 6_800, @rental_two.commission_price
+    assert_equal 27_800, @rental_three.commission_price
+  end
+
+  def test_options
+    assert_equal %i[gps baby_seat], @rental_one.options.map(&:type)
   end
 
   def test_json_output
     expected_output = {
       "id": 1,
+      "options": [
+        :gps,
+        :baby_seat
+      ],
       "actions": [
         {
           "who": :driver,
           "type": :debit,
-          "amount": 3000
+          "amount": 3700
         },
         {
           "who": :owner,
           "type": :credit,
-          "amount": 2100
+          "amount": 2800
         },
         {
           "who": :insurance,

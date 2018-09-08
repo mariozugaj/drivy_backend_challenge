@@ -18,14 +18,14 @@ class RentalPaymentsDriverPaymentTest < Minitest::Test
   end
 
   def test_payment_total
-    assert_equal 3_000, @driver_payment.payment_total
+    assert_equal 3_700, @driver_payment.payment_total
   end
 
   def test_json_output_template
     output = {
       who: :driver,
       type: :debit,
-      amount: 3_000
+      amount: 3_700
     }
     assert_equal output, @driver_payment.to_json
   end

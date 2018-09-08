@@ -6,12 +6,12 @@ class RentalCommissionTest < Minitest::Test
   include TestHelper
 
   def setup
-    @commission = Rental::Commission.new(rental_default.total_price,
+    @commission = Rental::Commission.new(rental_default.commission_price,
                                          rental_default.duration)
   end
 
   def test_parameters
-    assert_equal 3000, @commission.price
+    assert_equal 3_000, @commission.price
     assert_equal 1, @commission.duration
   end
 

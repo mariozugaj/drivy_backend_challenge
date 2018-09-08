@@ -22,17 +22,28 @@ class Rental
     price.total
   end
 
+  def commission_price
+    price.commisionable_total
+  end
+
   def commission
-    @commission ||= Rental::Commission.new(total_price, duration)
+    @commission ||= Rental::Commission.new(commission_price, duration)
   end
 
   def payments
     @payments ||= Rental::Payments.new(self)
   end
 
+  def options
+    @options ||= drivy.options.select do |option|
+      option.rental_id == id
+    end
+  end
+
   def to_json
     {
       id: id,
+      options: options.map(&:type),
       actions: payments.to_json
     }
   end
