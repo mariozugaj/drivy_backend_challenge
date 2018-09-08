@@ -23,8 +23,8 @@ class RentalTest < Minitest::Test
 
   def test_total_price
     assert_equal 3_000, @rental_one.total_price
-    assert_equal 7_000, @rental_two.total_price
-    assert_equal 34_000, @rental_three.total_price
+    assert_equal 6_800, @rental_two.total_price
+    assert_equal 27_800, @rental_three.total_price
   end
 
   def test_json_output
