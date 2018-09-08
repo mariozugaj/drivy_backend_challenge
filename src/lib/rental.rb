@@ -26,11 +26,14 @@ class Rental
     @commission ||= Rental::Commission.new(total_price, duration)
   end
 
+  def payments
+    @payments ||= Rental::Payments.new(self)
+  end
+
   def to_json
     {
       id: id,
-      price: total_price,
-      commission: commission.to_json
+      actions: payments.to_json
     }
   end
 end

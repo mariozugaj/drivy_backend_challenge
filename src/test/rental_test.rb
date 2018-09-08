@@ -30,12 +30,33 @@ class RentalTest < Minitest::Test
   def test_json_output
     expected_output = {
       "id": 1,
-      "price": 3_000,
-      "commission": {
-        "insurance_fee": 450,
-        "assistance_fee": 100,
-        "drivy_fee": 350
-      }
+      "actions": [
+        {
+          "who": :driver,
+          "type": :debit,
+          "amount": 3000
+        },
+        {
+          "who": :owner,
+          "type": :credit,
+          "amount": 2100
+        },
+        {
+          "who": :insurance,
+          "type": :credit,
+          "amount": 450
+        },
+        {
+          "who": :assistance,
+          "type": :credit,
+          "amount": 100
+        },
+        {
+          "who": :drivy,
+          "type": :credit,
+          "amount": 350
+        }
+      ]
     }
 
     assert_equal expected_output, @rental_one.to_json
